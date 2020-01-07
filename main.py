@@ -11,14 +11,14 @@ app.config.from_object(__name__)
 CORS(app)
 
 cluster = MongoClient('mongodb+srv://MariaLeo:provcolk13@cluster0-vfkmt.mongodb.net/test?retryWrites=true&w=majority')
-db = cluster['love_lock']
-values_collection = db['authorisation']
-lock_collection = db['lock']
+# db = cluster['love_lock']
+# values_collection = db['authorisation']
+# lock_collection = db['lock']
 
 @app.route('/')
 @app.route('/index')
 def main():
-    return(jsonify("Hello world"))
+    return"1234"
 
 # def get_data_as_response_object(username):
 #     response_object = {}
