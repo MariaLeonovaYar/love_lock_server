@@ -15,10 +15,10 @@ db = cluster['love_lock']
 values_collection = db['authorisation']
 lock_collection = db['lock']
 
-@app.route('/')
-@app.route('/index')
-def main():
-    return jsonify(', '.join([str(item.get('username')) for item in lock_collection.find()]))
+# @app.route('/')
+# @app.route('/index')
+# def main():
+#     return jsonify(', '.join([str(item.get('username')) for item in lock_collection.find()]))
 
 def get_data_as_response_object(username):
     response_object = {}
@@ -80,5 +80,5 @@ def add_input_register_into_db():
         values_collection.insert_one({"_id": max(ID)+1, "name" : name, "surname": surname, "username": username, "password": password})
         return jsonify({})
 
-# if __name__ == '__main__':
-#     app.run()
+if __name__ == '__main__':
+    app.run()
