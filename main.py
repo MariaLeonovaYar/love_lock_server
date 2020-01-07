@@ -1,9 +1,9 @@
 from flask import Flask, jsonify, request
 # from flask_cors import CORS
-from pymongo import MongoClient
+# from pymongo import MongoClient
 from gunicorn import app
 
-DEBUG = True
+# DEBUG = True
 
 app = Flask(__name__)
 app.config.from_object(__name__)
