@@ -1,6 +1,6 @@
 from flask import Flask, jsonify, request
 # from flask_cors import CORS
-# from pymongo import MongoClient
+from pymongo import MongoClient
 from gunicorn import app
 
 # DEBUG = True
@@ -10,10 +10,10 @@ app.config.from_object(__name__)
 
 # CORS(app)
 
-# cluster = MongoClient('mongodb+srv://MariaLeo:provcolk13@cluster0-vfkmt.mongodb.net/test?retryWrites=true&w=majority')
-# db = cluster['love_lock']
-# values_collection = db['authorisation']
-# lock_collection = db['lock']
+cluster = MongoClient('mongodb+srv://MariaLeo:provcolk13@cluster0-vfkmt.mongodb.net/test?retryWrites=true&w=majority')
+db = cluster['love_lock']
+values_collection = db['authorisation']
+lock_collection = db['lock']
 
 @app.route('/')
 @app.route('/index')
