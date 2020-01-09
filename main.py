@@ -58,8 +58,8 @@ def add_input_value_into_db():
         design = request_data.get('design')
         size = request_data.get('size')
         message = request_data.get('message')
-        ID = lock_collection.find().distinct('_id')
-        lock_collection.insert_one({"_id": max(ID) + 1, "username": username, "person" : person, "design": design, "size": size, "message": message})
+        ID = values_collection.find().distinct('_id')
+        values_collection.insert_one({"_id": max(ID) + 1, "username": username, "person" : person, "design": design, "size": size, "message": message})
         return jsonify({})
 
 #удаление замка по айди
