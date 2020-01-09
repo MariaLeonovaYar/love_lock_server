@@ -76,13 +76,14 @@ def delete_lock():
 @app.route('/api/send', methods=['POST'])
 def add_input_register_into_db():
     if request.method == 'POST':
-        request_data = request.get_json()
-        name = request_data.get('name')
-        surname = request_data.get('surname')
+         request_data = request.get_json()
         username = request_data.get('username')
-        password = request_data.get('password')
-        ID = values_collection.find().distinct('_id')
-        values_collection.insert_one({"_id": max(ID)+1, "name" : name, "surname": surname, "username": username, "password": password})
+        person = request_data.get('person')
+        design = request_data.get('design')
+        size = request_data.get('size')
+        message = request_data.get('message')
+        ID = lock_collection.find().distinct('_id')
+        lock_collection.insert_one({"_id": max(ID) + 1, "username": username, "person" : person, "design": design, "size": size, "message": message})
         return jsonify({})
 
 if __name__ == '__main__':
