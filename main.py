@@ -53,13 +53,13 @@ def get_user_data():
 def add_input_value_into_db():
     if request.method == 'POST':
         request_data = request.get_json()
-        #username = request_data.get('username')
-        #person = request_data.get('person')
-        #design = request_data.get('design')
-        #size = request_data.get('size')
-        #message = request_data.get('message')
-        #ID = lock_collection.find().distinct('_id')
-        #lock_collection.insert_one({"_id": max(ID) + 1, "username": username, "person" : person, "design": design, "size": size, "message": message})
+        username = request_data.get('username')
+        person = request_data.get('person')
+        design = request_data.get('design')
+        size = request_data.get('size')
+        message = request_data.get('message')
+        ID = lock_collection.find().distinct('_id')
+        lock_collection.insert_one({"_id": max(ID) + 1, "username": username, "person" : person, "design": design, "size": size, "message": message})
         return jsonify({})
 
 #удаление замка по айди
@@ -76,7 +76,7 @@ def delete_lock():
 @app.route('/api/send', methods=['POST'])
 def add_input_register_into_db():
     if request.method == 'POST':
-        request_data = request.get_json()s
+        request_data = request.get_json()
         name = request_data.get('name')
         surname = request_data.get('surname')
         username = request_data.get('username')
