@@ -81,8 +81,8 @@ def add_input_register_into_db():
         surname = request_data.get('surname')
         username = request_data.get('username')
         password = request_data.get('password')
-        ID = values_collection.find().distinct('_id')
-        values_collection.insert_one({"_id": max(ID)+1, "name" : name, "surname": surname, "username": username, "password": password})
+        ID = lock_collection.find().distinct('_id')
+        lock_collection.insert_one({"_id": max(ID)+1, "name" : name, "surname": surname, "username": username, "password": password})
         return jsonify({})
 
 if __name__ == '__main__':
