@@ -45,7 +45,8 @@ def get_user_data():
     if request.method == 'GET':
         username = request.args.get('username')
         response_object = get_data_as_response_object(username)
-        return jsonify(response_object)
+        #return jsonify(response_object)\
+        return username
 
 #регистрация пользователя
 @app.route('/')
