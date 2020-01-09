@@ -30,7 +30,7 @@ def get_data_as_response_object(username):
     return response_object
 
 #проверка (есть ли такой пользователь)
-@app.route('/')
+#@app.route('/')
 @app.route('/api/is_registered', methods=['GET'])
 def is_registered():
     if request.method == 'GET':
@@ -39,7 +39,7 @@ def is_registered():
         return jsonify(response_object)
 
 #получение всех замков пользователя
-@app.route('/')
+#@app.route('/')
 @app.route('/api/get_user_data', methods=['GET'])
 def get_user_data():
     if request.method == 'GET':
@@ -48,7 +48,7 @@ def get_user_data():
         return jsonify(response_object)
 
 #регистрация пользователя
-@app.route('/')
+#@app.route('/')
 @app.route('/api/send_lock_data', methods=['POST'])
 def add_input_value_into_db():
     if request.method == 'POST':
@@ -63,7 +63,7 @@ def add_input_value_into_db():
         return jsonify({})
 
 #удаление замка по айди
-@app.route('/')
+#@app.route('/')
 @app.route('/api/delete_lock_id', methods=['POST'])
 def delete_lock():
     if request.method == 'POST':
@@ -72,7 +72,7 @@ def delete_lock():
         return jsonify({})
 
 #добавление нового замка
-@app.route('/')
+#@app.route('/')
 @app.route('/api/send', methods=['POST'])
 def add_input_register_into_db():
     if request.method == 'POST':
