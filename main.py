@@ -66,15 +66,15 @@ def login():
 @app.route('/register', methods=['POST'])
 def register():
     users = db['authorisation']
-    return jsonify({})
-    #request_data = request.get_json()
+    
+    request_data = request.get_json()
     #name = request_data.get('name')
     #surname = request_data.get('surname')
     #username = request_data.get('username')
     #password = request_data.get('password')
     #response_object = {}
     #existing_user = users.find_one({'username' : str(username)})
-
+    return jsonify({})
     #if (users.find().distinct('_id')):
      #   ID = int(str(max(users.find().distinct('_id'))), 10)+1
    # else:
