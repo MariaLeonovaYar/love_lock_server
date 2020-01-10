@@ -41,11 +41,11 @@ def send_lock_data():
         design = request_data.get('design')
         size = request_data.get('size')
         message = request_data.get('message')
-        #if (lock_collection.find().distinct('_id')):
-            #ID = int(max(lock_collection.find().distinct('_id')), 10)+1
-        #else:
-            #ID = 0
-        lock_collection.insert_one({"_id": 130, "username": username, "person" : person, "design": design, "size": size, "message": message})
+        if (lock_collection.find().distinct('_id')):
+            ID = (max(lock_collection.find().distinct('_id')), 10)+1
+        else:
+            ID = 0
+        lock_collection.insert_one({"_id": ID, "username": username, "person" : person, "design": design, "size": size, "message": message})
         return jsonify({})
 
 @app.route('/login', methods=['POST'])
