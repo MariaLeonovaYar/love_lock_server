@@ -73,7 +73,7 @@ def register():
     username = request_data.get('username')
     password = request_data.get('password')
     response_object = {}
-    #existing_user = users.find_one({'username' : str(username)})
+    existing_user = users.find_one({'username' : str(username)})
     return jsonify({})
     #if (users.find().distinct('_id')):
      #   ID = int(str(max(users.find().distinct('_id'))), 10)+1
