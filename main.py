@@ -55,7 +55,7 @@ def login():
     request_data = request.get_json()
     username = request_data.get('username')
     password = request_data.get('password')
-    login_user = users.find_one({'username' : str(username)})
+    login_user = users.find_one({'username' : username})
     if login_user:
         if str(password) == login_user['password']:
             response_object['message'] = str('true')
