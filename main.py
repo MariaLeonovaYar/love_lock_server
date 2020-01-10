@@ -74,13 +74,13 @@ def register():
     response_object = {}
     existing_user = users.find_one({'username' : str(username)})
 
-    if (users.find().distinct('_id')):
-        ID = int(str(max(users.find().distinct('_id'))), 10)+1
-    else:
-        ID = 0
+    #if (users.find().distinct('_id')):
+     #   ID = int(str(max(users.find().distinct('_id'))), 10)+1
+   # else:
+    #    ID = 0
 
     if existing_user is None:
-        users.insert_one({"_id": ID, 'name' : name,'surname' : surname,'username' : username, 'password' : password})
+        users.insert_one({'name' : name,'surname' : surname,'username' : username, 'password' : password})
         response_object['message'] = str('true')
         return response_object
     response_object['message'] = str('false')
