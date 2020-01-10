@@ -62,6 +62,8 @@ def login():
     response_object['message'] = str('false')
     return response_object
 
+
+@app.route('/')
 @app.route('/register', methods=['POST'])
 def register():
     users = db['authorisation']
@@ -74,7 +76,6 @@ def register():
     existing_user = users.find_one({'username' : str(username)})
 
     if (users.find().distinct('_id')):
-             int(max(lock_collection.find().distinct('_id')), 10)+1
         ID = int(str(max(users.find().distinct('_id'))), 10)+1
     else:
         ID = 0
