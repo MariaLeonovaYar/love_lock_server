@@ -14,11 +14,6 @@ db = cluster['love_lock']
 values_collection = db['authorisation']
 lock_collection = db['lock']
 
-# @app.route('/')
-# @app.route('/index')
-# def main():
-#     return jsonify(', '.join([str(item.get('username')) for item in lock_collection.find()]))
-
 def get_data_as_response_object(username):
     response_object = {}
     results = lock_collection.find({'username': username})
