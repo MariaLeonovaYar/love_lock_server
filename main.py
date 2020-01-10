@@ -80,12 +80,12 @@ def register():
    # else:
     #    ID = 0
 
-    if existing_user is None:
+    if !existing_user:
         users.insert_one({'name' : name,'surname' : surname,'username' : username, 'password' : password})
         response_object['message'] = str('true')
-        return response_object
+        return jsonify(response_object)
     response_object['message'] = str('false')
-    return response_object
+    return jsonify(response_object)
 
 @app.route('/api/delete_lock_id', methods=['POST'])
 def delete_lock():
