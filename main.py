@@ -11,7 +11,7 @@ app.config.from_object(__name__)
 
 CORS(app)
 
-cluster = MongoClient('mongodb+srv://atakhanova:Kate1245@cluster0-qp8rs.mongodb.net/test?retryWrites=true&w=majority')
+cluster = MongoClient('mongodb+srv://MariaLeo:provcolk13@cluster0-vfkmt.mongodb.net/test?retryWrites=true&w=majority')
 db = cluster['love_lock']
 values_collection = db['authorisation']
 lock_collection = db['lock']
@@ -54,15 +54,15 @@ def add_lock_data_into_db():
 def login():
     users = db['authorisation']
     response_object = {}
-#     request_data = request.get_json()
-#     username = request_data.get('username')
-#     password = request_data.get('password')
-#     login_user = users.find_one({'username' : str(username)})
-#     if login_user:
-#         if str(password) == login_user['password']:
-#             response_object['message'] = str('true')
-#             return response_object
-#     response_object['message'] = str('false')
+    request_data = request.get_json()
+    username = request_data.get('username')
+    password = request_data.get('password')
+    login_user = users.find_one({'username' : str(username)})
+    if login_user:
+        if str(password) == login_user['password']:
+            response_object['message'] = str('true')
+            return response_object
+    response_object['message'] = str('false')
     return response_object
 
 
