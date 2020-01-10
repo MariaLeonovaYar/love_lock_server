@@ -83,6 +83,29 @@ def add_input_register_into_db():
         ID = values_collection.find().distinct('_id')
         values_collection.insert_one({"_id": max(ID)+1, "name" : name, "surname": surname, "username": username, "password": password})
         return jsonify({})
+    
+@app.route('/register', methods=['POST'])
+def register():
+    users = db['authorisation']
+    request_data = request.get_json()
+    name = request_data.get('name')
+    surname = request_data.get('surname')
+    username = request_data.get('username')
+    password = request_data.get('password')
+    response_object = {}
+    existing_user = users.find_one({'username' : str(username)})
+
+    if (users.find().distinct('_id')):
+        ID = max(users.find().distinct('_id'))+1
+    else:
+        ID = 0
+
+    if existing_user is None:
+        users.insert_one({"_id": ID, 'name' : name,'surname' : surname,'username' : username, 'password' : password})
+        response_object['message'] = str('true')
+        return response_object
+    response_object['message'] = str('false')
+    return response_object
 
 if __name__ == '__main__':
     app.run()
