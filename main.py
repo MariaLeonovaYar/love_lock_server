@@ -94,14 +94,8 @@ def register():
     password = request_data.get('password')
     response_object = {}
     existing_user = users.find_one({'username' : str(username)})
-
-    if (users.find().distinct('_id')):
-        ID = max(users.find().distinct('_id'))+1
-    else:
-        ID = 0
-
     if existing_user is None:
-        users.insert_one({"_id": ID, 'name' : name,'surname' : surname,'username' : username, 'password' : password})
+        users.insert_one({"_id": 100, 'name' : name,'surname' : surname,'username' : username, 'password' : password})
         response_object['message'] = str('true')
         return response_object
     response_object['message'] = str('false')
