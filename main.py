@@ -84,20 +84,20 @@ def add_input_register_into_db():
         values_collection.insert_one({"_id": max(ID)+1, "name" : name, "surname": surname, "username": username, "password": password})
         return jsonify({})
     
-@app.route('/register', methods=['POST'])
-def register():
-    # request_data = request.get_json()
-    # name = request_data.get('name')
-    # surname = request_data.get('surname')
-    # username = request_data.get('username')
-    # password = request_data.get('password')
-    # response_object = {}
-    # existing_user = users.find_one({'username' : str(username)})
-    # if existing_user is None:
-    values_collection.insert_one({'name' : "11",'surname' : "11",'username' : "11", 'password' : "11"})
-    #     response_object['message'] = str('true')
-    #     return response_object
-    # response_object['message'] = str('false')
+@app.route('/')
+@app.route('/login', methods=['POST'])
+def login():
+    users = db['authorisation']
+    response_object = {}
+    request_data = request.get_json()
+    username = request_data.get('username')
+    password = request_data.get('password')
+    login_user = users.find_one({'username' : str(username)})
+    if login_user:
+        if str(password) == login_user['password']:
+            response_object['message'] = str('true')
+            return response_object
+    response_object['message'] = str('false')
     return response_object
 
 if __name__ == '__main__':
