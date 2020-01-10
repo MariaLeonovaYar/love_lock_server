@@ -25,6 +25,7 @@ def get_lock_data_as_response_object(username):
     response_object['data'] = arr
     return response_object
 
+@app.route('/')
 @app.route('/api/get_lock_data', methods=['GET'])
 def get_lock_data():
     if request.method == 'GET':
@@ -64,6 +65,8 @@ def login():
     return response_object
 
 
+
+
 @app.route('/register', methods=['POST'])
 def register():
     users = db['authorisation']
@@ -86,6 +89,13 @@ def register():
         return response_object
     response_object['message'] = str('false')
     return response_object
+
+@app.route('/api/delete_lock_id', methods=['POST'])
+def delete_lock():
+    if request.method == 'POST':
+    id_lock = request.get_json().get('id_lock')
+    lock_collection.delete_one({'_id': id_lock})
+    return jsonify({})
 
 if __name__ == '__main__':
     app.run()
