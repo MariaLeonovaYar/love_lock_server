@@ -48,7 +48,8 @@ def add_lock_data_into_db():
             ID = 0
         lock_collection.insert_one({"_id": ID, "username": username, "person" : person, "design": design, "size": size, "message": message})
         return jsonify({})
-
+    
+@app.route('/')
 @app.route('/login', methods=['POST'])
 def login():
     users = db['authorisation']
@@ -66,7 +67,7 @@ def login():
 
 
 
-
+@app.route('/')
 @app.route('/register', methods=['POST'])
 def register():
     users = db['authorisation']
@@ -90,12 +91,13 @@ def register():
     response_object['message'] = str('false')
     return response_object
 
+@app.route('/')
 @app.route('/api/delete_lock_id', methods=['POST'])
 def delete_lock():
     if request.method == 'POST':
-    id_lock = request.get_json().get('id_lock')
-    lock_collection.delete_one({'_id': id_lock})
-    return jsonify({})
+        id_lock = request.get_json().get('id_lock')
+        lock_collection.delete_one({'_id': id_lock})
+        return jsonify({})
 
 if __name__ == '__main__':
     app.run()
