@@ -24,7 +24,6 @@ def get_lock_data_as_response_object(username):
     response_object['data'] = arr
     return response_object
 
-@app.route('/')
 @app.route('/api/get_lock_data', methods=['GET'])
 def get_lock_data():
     if request.method == 'GET':
@@ -32,7 +31,6 @@ def get_lock_data():
         response_object = get_lock_data_as_response_object(username)
         return jsonify(response_object)
 
-@app.route('/')
 @app.route('/api/send_lock_data', methods=['POST'])
 def add_lock_data_into_db():
     if request.method == 'POST':
@@ -48,8 +46,7 @@ def add_lock_data_into_db():
             ID = 0
         lock_collection.insert_one({"_id": ID, "username": username, "person" : person, "design": design, "size": size, "message": message})
         return jsonify({})
-    
-@app.route('/')
+
 @app.route('/login', methods=['POST'])
 def login():
     users = db['authorisation']
@@ -67,7 +64,7 @@ def login():
 
 
 
-@app.route('/')
+
 @app.route('/register', methods=['POST'])
 def register():
     users = db['authorisation']
@@ -78,10 +75,12 @@ def register():
     password = request_data.get('password')
     response_object = {}
     existing_user = users.find_one({'username' : str(username)})
+
     if (users.find().distinct('_id')):
         ID = max(users.find().distinct('_id'))+1
     else:
         ID = 0
+
     if existing_user is None:
         users.insert_one({"_id": ID, 'name' : name,'surname' : surname,'username' : username, 'password' : password})
         response_object['message'] = str('true')
@@ -89,7 +88,6 @@ def register():
     response_object['message'] = str('false')
     return response_object
 
-@app.route('/')
 @app.route('/api/delete_lock_id', methods=['POST'])
 def delete_lock():
     if request.method == 'POST':
