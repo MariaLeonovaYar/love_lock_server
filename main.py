@@ -75,15 +75,15 @@ def register():
     password = request_data.get('password')
     response_object = {}
     existing_user = users.find_one({'username' : str(username)})
-    #if (users.find().distinct('_id')):
-     #   ID = int(str(max(users.find().distinct('_id'))), 10)+1
-   # else:
-    #    ID = 0
-
+    ID = lock_collection.distinct( "_id" )
+    if (ID):
+         ID = max(ID) + 1
+    else:
+         ID = 0
     if existing_user:
          response_object['message'] = str('false')
          return jsonify(response_object)
-    users.insert_one({'name' : name,'surname' : surname,'username' : username, 'password' : password})
+    users.insert_one({'_id': ID, 'name' : name,'surname' : surname,'username' : username, 'password' : password})
     response_object['message'] = str('true')
     return jsonify(response_object)
 
