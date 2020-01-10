@@ -42,7 +42,8 @@ def send_lock_data():
         size = request_data.get('size')
         message = request_data.get('message')
         ID = lock_collection.find().distinct('_id')
-#         if (lock_collection.find().distinct('_id')):
+        if (lock_collection.find().distinct('_id')):
+            ID = 30
 #              ID = (max(lock_collection.find().distinct('_id')), 10)+1
 #         else:
 #             ID = 0
