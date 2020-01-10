@@ -66,6 +66,7 @@ def login():
 @app.route('/register', methods=['POST'])
 def register():
     users = db['authorisation']
+    return jsonify({})
     #request_data = request.get_json()
     #name = request_data.get('name')
     #surname = request_data.get('surname')
@@ -85,7 +86,6 @@ def register():
        # return response_object
     #response_object['message'] = str('false')
     #return jsonify(response_object)
-     return jsonify({})
 
 @app.route('/api/delete_lock_id', methods=['POST'])
 def delete_lock():
