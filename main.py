@@ -68,11 +68,11 @@ def register():
     users = db['authorisation']
     
     request_data = request.get_json()
-    #name = request_data.get('name')
-    #surname = request_data.get('surname')
-    #username = request_data.get('username')
-    #password = request_data.get('password')
-    #response_object = {}
+    name = request_data.get('name')
+    surname = request_data.get('surname')
+    username = request_data.get('username')
+    password = request_data.get('password')
+    response_object = {}
     #existing_user = users.find_one({'username' : str(username)})
     return jsonify({})
     #if (users.find().distinct('_id')):
