@@ -75,7 +75,7 @@ def register():
     password = request_data.get('password')
     response_object = {}
     existing_user = users.find_one({'username' : str(username)})
-    ID = lock_collection.distinct( "_id" )
+    ID = users.distinct( "_id" )
     if (ID):
          ID = max(ID) + 1
     else:
