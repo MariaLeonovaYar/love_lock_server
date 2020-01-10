@@ -59,7 +59,7 @@ def login():
     if login_user:
         if str(password) == login_user['password']:
             response_object['message'] = str('true')
-            return response_object
+            return jsonify(response_object)
     response_object['message'] = str('false')
     return jsonify(response_object)
 
