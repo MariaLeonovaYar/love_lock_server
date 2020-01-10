@@ -74,7 +74,7 @@ def register():
     password = request_data.get('password')
     response_object = {}
     existing_user = users.find_one({'username' : str(username)})
-    response_object = existing_use
+    response_object = existing_user
     #if (users.find().distinct('_id')):
      #   ID = int(str(max(users.find().distinct('_id'))), 10)+1
    # else:
