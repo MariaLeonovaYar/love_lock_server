@@ -44,9 +44,9 @@ def send_lock_data():
         ID = lock_collection.distinct( "_id" )
         if (ID):
             ID = max(ID) + 1
-#         else:
-#             ID = 0
-        lock_collection.insert_one({"username": username, "person" : person, "design": design, "size": size, "message": message})
+        else:
+            ID = 0
+        lock_collection.insert_one({"_id": ID, "username": username, "person" : person, "design": design, "size": size, "message": message})
         return jsonify({})
 
 @app.route('/login', methods=['POST'])
