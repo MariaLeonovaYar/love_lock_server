@@ -84,8 +84,7 @@ def register():
         users.insert_one({'name' : name,'surname' : surname,'username' : username, 'password' : password})
         response_object['message'] = str('true')
     response_object['message'] = str('false')
-    return jsonify({})
-    #return jsonify(response_object)
+    return jsonify(response_object)
 
 @app.route('/api/delete_lock_id', methods=['POST'])
 def delete_lock():
