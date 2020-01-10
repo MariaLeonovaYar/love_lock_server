@@ -43,8 +43,7 @@ def send_lock_data():
         message = request_data.get('message')
         ID = lock_collection.find().distinct('_id')
         if (lock_collection.find().distinct('_id')):
-            ID = 30
-#              ID = (max(lock_collection.find().distinct('_id')), 10)+1
+            ID = (max(lock_collection.find().distinct('_id')), 0) + 1
 #         else:
 #             ID = 0
         lock_collection.insert_one({"username": username, "person" : person, "design": design, "size": size, "message": message})
