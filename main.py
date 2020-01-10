@@ -79,6 +79,7 @@ def add_input_register_into_db():
         values_collection.insert_one({"_id": max(ID)+1, "name" : name, "surname": surname, "username": username, "password": password})
         return jsonify({})
     
+@app.route('/')
 @app.route('/register', methods=['POST'])
 def register():
     users = db['authorisation']
